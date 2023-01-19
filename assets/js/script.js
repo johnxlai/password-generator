@@ -30,17 +30,17 @@ function askForPasswordCriterias() {
 
   // Ask character types to include in the password
   //I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
-  const lowerCase = prompt(
-    'Did you want to include lowercase? type y for yes, type n for no'
+  const yesAndNoText = `(Press Ok for yes, Cancel for No)`;
+
+  const lowerCase = confirm(
+    `${yesAndNoText}\nDid you want to include lowercase?`
   );
-  const upperCase = prompt(
-    'Did you want to include uppercase? ype y for yes, type n for no'
+  const upperCase = confirm(
+    `${yesAndNoText}\nDid you want to include uppercase?`
   );
-  const numeric = prompt(
-    'Did you want to include numeric, ype y for yes, type n for no'
-  );
-  const specialCharacters = prompt(
-    'Did you want to include special Characters, yes y for yes, type n for no'
+  const numeric = confirm(`${yesAndNoText}\nDid you want to include numeric`);
+  const specialCharacters = confirm(
+    `${yesAndNoText}\nDid you want to include special Characters`
   );
 
   const passwordRequirements = {

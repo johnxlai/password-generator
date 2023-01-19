@@ -35,6 +35,9 @@ function generatePassword() {
     return;
   }
 
+  //Tell user you must select one type
+  alert('Please note at least one character type its selected');
+
   // Ask character types to include in the password
   //I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
   const yesAndNoText = `(Press Ok for yes, Cancel for No)`;

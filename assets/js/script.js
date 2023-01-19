@@ -14,7 +14,6 @@ generateBtn.addEventListener('click', writePassword);
 
 function invaildInput() {
   alert(`Invaild input please start again`);
-  passwordText.value = generatePassword();
 }
 
 //Prompt question for password criteria
@@ -24,7 +23,7 @@ function generatePassword() {
 
   //prompt for length of the password
   //Choose length of 8 characters and no more than 128 characters
-  const lengthOfPw = prompt(
+  let lengthOfPw = prompt(
     'Choose length of 8 characters and no more than 128 characters'
   );
 

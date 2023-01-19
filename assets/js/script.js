@@ -61,6 +61,12 @@ function generatePassword() {
     specialCharacters,
   };
 
+  // (my input should be validated and at least one character type should be selected)
+  const ifAllFalse = Object.keys(passwordRequirements).every(
+    (key) => !passwordRequirements[key]
+  );
+  console.log(ifAllFalse);
+
   let pwChars = '';
   let finalPassword = '';
 
@@ -92,6 +98,3 @@ function generatePassword() {
   console.log(finalPassword);
   return finalPassword;
 }
-
-//TO DO
-// (my input should be validated and at least one character type should be selected)

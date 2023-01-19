@@ -12,6 +12,11 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
+function invaildInput() {
+  alert(`Invaild input please start again`);
+  passwordText.value = generatePassword();
+}
+
 //Prompt question for password criteria
 function generatePassword() {
   //User selects which criteria to include in the password
@@ -22,6 +27,14 @@ function generatePassword() {
   const lengthOfPw = prompt(
     'Choose length of 8 characters and no more than 128 characters'
   );
+
+  //check if number is between 8 - 128
+  if (lengthOfPw && lengthOfPw >= 8 && lengthOfPw <= 128) {
+    console.log(lengthOfPw);
+  } else {
+    invaildInput();
+    return;
+  }
 
   // Ask character types to include in the password
   //I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
@@ -74,10 +87,9 @@ function generatePassword() {
     finalPassword += pwChars.substring(randomNumber, randomNumber + 1);
   }
   console.log(finalPassword.length);
+  console.log(finalPassword);
   return finalPassword;
 }
 
 //TO DO
 // (my input should be validated and at least one character type should be selected)
-
-//All prompts are answered

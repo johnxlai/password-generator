@@ -3,22 +3,17 @@
 const generateBtn = document.querySelector('#generate');
 const passwordText = document.querySelector('#password');
 
-function generatePassword() {
-  console.log('generate password');
-}
 // Write password to the #password input
 function writePassword() {
-  askForPasswordCriterias();
-  // const password = generatePassword();
   //Display password in box
-  // passwordText.value = password;
+  passwordText.value = generatePassword();
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
 //Prompt question for password criteria
-function askForPasswordCriterias() {
+function generatePassword() {
   //User selects which criteria to include in the password
   alert('Please tell us your password criteria');
 
@@ -69,18 +64,20 @@ function askForPasswordCriterias() {
     pwChars += `!@#$%^&*()`;
   }
 
+  //Create a password
   let randomNumber = Math.floor(Math.random() * pwChars.length);
-  console.log(randomNumber);
+
   for (let i = 0; i <= passwordRequirements.lengthOfPw; i++) {
+    //return a number between 0 to password length
     let randomNumber = Math.floor(Math.random() * pwChars.length);
 
-    //not sure i understand logic here
+    //Add random single char from the selected criteria using a random number as the index of the string - the plus on make sures it only grabs one char
     finalPassword += pwChars.substring(randomNumber, randomNumber + 1);
   }
-  // console.log(finalPassword);
+  return finalPassword;
 }
 
+//TO DO
 // (my input should be validated and at least one character type should be selected)
 
 //All prompts are answered
-//Create a password

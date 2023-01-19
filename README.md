@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 
 # User Story
 AS AN employee with access to sensitive data
@@ -21,3 +21,13 @@ WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
+
+# Description
+* this is a password generator
+
+
+# Screenshot
+![Final Website](assets/img/john-lai-website-mock-up.png)
+
+# Live Site
+* https://johnxlai.github.io/password-generator

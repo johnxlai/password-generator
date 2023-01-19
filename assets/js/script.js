@@ -22,17 +22,37 @@ function askForPasswordCriterias() {
   //User selects which criteria to include in the password
   alert('Please tell us your password criteria');
 
-  const lenghtOfPw = prompt(
+  //prompt for length of the password
+  //Choose length of 8 characters and no more than 128 characters
+  const lengthOfPw = prompt(
     'Choose length of 8 characters and no more than 128 characters'
   );
 
-  console.log(lenghtOfPw);
-  //prompt for length of the password
-  //Choose length of 8 characters and no more than 128 characters
+  // Ask character types to include in the password
+  //I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+  const lowerCase = prompt(
+    'Did you want to include lowercase? type y for yes, type n for no'
+  );
+  const upperCase = prompt(
+    'Did you want to include uppercase? ype y for yes, type n for no'
+  );
+  const numeric = prompt(
+    'Did you want to include numeric, ype y for yes, type n for no'
+  );
+  const specialCharacters = prompt(
+    'Did you want to include special Characters, yes y for yes, type n for no'
+  );
+
+  const passwordRequirements = {
+    lengthOfPw,
+    upperCase: upperCase,
+    numeric: numeric,
+    specialCharacters: specialCharacters,
+  };
+
+  console.log(passwordRequirements);
 }
 
-// Ask character types to include in the password
-//I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
 // (my input should be validated and at least one character type should be selected)
 
 //All prompts are answered

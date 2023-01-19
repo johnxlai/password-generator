@@ -65,15 +65,15 @@ function generatePassword() {
   }
 
   //Create a password
-  let randomNumber = Math.floor(Math.random() * pwChars.length);
 
-  for (let i = 0; i <= passwordRequirements.lengthOfPw; i++) {
+  for (let i = 0; i < passwordRequirements.lengthOfPw; i++) {
     //return a number between 0 to password length
     let randomNumber = Math.floor(Math.random() * pwChars.length);
 
     //Add random single char from the selected criteria using a random number as the index of the string - the plus on make sures it only grabs one char
     finalPassword += pwChars.substring(randomNumber, randomNumber + 1);
   }
+  console.log(finalPassword.length);
   return finalPassword;
 }
 

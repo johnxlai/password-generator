@@ -51,9 +51,8 @@ function askForPasswordCriterias() {
     specialCharacters,
   };
 
-  console.log(passwordRequirements);
-
   let pwChars = '';
+  let finalPassword = '';
 
   if (passwordRequirements.lowerCase) {
     pwChars += `abcdefghijklmnopqrstuvwxyz`;
@@ -70,12 +69,15 @@ function askForPasswordCriterias() {
     pwChars += `!@#$%^&*()`;
   }
 
-  // pwChars =
-  //   '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  console.log(pwChars);
+  let randomNumber = Math.floor(Math.random() * pwChars.length);
+  console.log(randomNumber);
+  for (let i = 0; i <= passwordRequirements.lengthOfPw; i++) {
+    let randomNumber = Math.floor(Math.random() * pwChars.length);
 
-  passwordRequirements.lengthOfPw;
-  const finalPassword = '';
+    //not sure i understand logic here
+    finalPassword += pwChars.substring(randomNumber, randomNumber + 1);
+  }
+  // console.log(finalPassword);
 }
 
 // (my input should be validated and at least one character type should be selected)

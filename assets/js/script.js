@@ -45,12 +45,37 @@ function askForPasswordCriterias() {
 
   const passwordRequirements = {
     lengthOfPw,
-    upperCase: upperCase,
-    numeric: numeric,
-    specialCharacters: specialCharacters,
+    lowerCase,
+    upperCase,
+    numeric,
+    specialCharacters,
   };
 
   console.log(passwordRequirements);
+
+  let pwChars = '';
+
+  if (passwordRequirements.lowerCase) {
+    pwChars += `abcdefghijklmnopqrstuvwxyz`;
+  }
+  if (passwordRequirements.upperCase) {
+    pwChars += `ABCDEFGHIJKLMNOPQRSTUVWXYZ`;
+  }
+
+  if (passwordRequirements.numeric) {
+    pwChars += `0123456789`;
+  }
+
+  if (passwordRequirements.specialCharacters) {
+    pwChars += `!@#$%^&*()`;
+  }
+
+  // pwChars =
+  //   '0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  console.log(pwChars);
+
+  passwordRequirements.lengthOfPw;
+  const finalPassword = '';
 }
 
 // (my input should be validated and at least one character type should be selected)

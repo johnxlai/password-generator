@@ -3,6 +3,7 @@
 const generateBtn = document.querySelector('#generate');
 const passwordText = document.querySelector('#password');
 
+//password character criterias array
 const upperArr = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`.split('');
 const lowerArr = `abcdefghijklmnopqrstuvwxyz`.split('');
 const numericArr = `0123456789`.split('');

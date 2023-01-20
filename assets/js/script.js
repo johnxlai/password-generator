@@ -39,9 +39,7 @@ function generatePassword() {
   );
 
   //check if number is between 8 - 128
-  if (lengthOfPw && lengthOfPw >= 8 && lengthOfPw <= 128) {
-    console.log(lengthOfPw);
-  } else {
+  if (!(lengthOfPw && lengthOfPw >= 8 && lengthOfPw <= 128)) {
     invaildInput();
     return `The length of password must be at least 8 characters long and no more than 128 characters`;
   }

@@ -22,12 +22,12 @@ function generatePassword() {
   passwordText.value = '';
 
   //User selects which criteria to include in the password
-  alert('Please tell us your password criteria');
+  alert(`Please tell us your password criteria`);
 
   //prompt for length of the password
   //Choose length of 8 characters and no more than 128 characters
   let lengthOfPw = prompt(
-    'Choose length of 8 characters and no more than 128 characters'
+    `Choose length of 8 characters and no more than 128 characters`
   );
 
   //check if number is between 8 - 128
@@ -35,11 +35,11 @@ function generatePassword() {
     console.log(lengthOfPw);
   } else {
     invaildInput();
-    return 'Please start Again';
+    return `Please start Again`;
   }
 
   //Tell user you must select one type
-  alert('Please note at least one character type needs to be selected');
+  alert(`Please note at least one character type needs to be selected`);
 
   // Ask character types to include in the password
   //I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
@@ -72,7 +72,7 @@ function generatePassword() {
     //Restart app
     console.log(`You need to select atleast one character type- ${ifAllFalse}`);
     invaildInput();
-    return 'Please Start Again';
+    return `Please Start Again`;
   }
 
   let pwChars = '';
@@ -97,7 +97,6 @@ function generatePassword() {
   console.dir(passwordRequirements);
 
   //Create a password
-
   for (let i = 0; i < passwordRequirements.lengthOfPw; i++) {
     //return a number between 0 to password length
     let randomNumber = Math.floor(Math.random() * pwChars.length);

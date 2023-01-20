@@ -19,8 +19,11 @@ function invaildInput() {
   alert(`Invaild input please start again`);
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+//Get Random Character From Array
+function getRandomChar(arr) {
+  let randomNumber = Math.floor(Math.random() * arr.length);
+  return arr[randomNumber];
+}
 
 //Prompt question for password criteria
 function generatePassword() {
@@ -40,14 +43,14 @@ function generatePassword() {
     console.log(lengthOfPw);
   } else {
     invaildInput();
-    return `Please start Again`;
+    return `The length of password must be at least 8 characters long and no more than 128 characters`;
   }
 
   //Tell user you must select one type
   alert(`Please note at least one character type needs to be selected`);
 
   // Ask character types to include in the password
-  //I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
+  //Confirms whether or not to include lowercase, uppercase, numeric, and/or special characters
   const yesAndNoText = `(Press Ok for yes, Cancel for No)`;
 
   const lowerCase = confirm(
@@ -61,6 +64,7 @@ function generatePassword() {
     `${yesAndNoText}\nDid you want to include special Characters`
   );
 
+  //Creating a password requirement obj
   let passwordRequirements = {
     lengthOfPw,
     lowerCase,
@@ -68,7 +72,7 @@ function generatePassword() {
     numeric,
     specialCharacters,
   };
-  console.dir(passwordRequirements);
+
   // (my input should be validated and at least one character type should be selected)
   const characterToUse = Object.keys(passwordRequirements).filter(
     (key) => passwordRequirements[key] === true
@@ -76,11 +80,11 @@ function generatePassword() {
 
   if (!characterToUse.length) {
     //Restart app
-    console.log(`You need to select atleast one character type`);
     invaildInput();
-    return `Please Start Again`;
+    return `You need to select at least one character type`;
   }
 
+  //Init pw
   let pwChars = [];
   let finalPassword = '';
 
@@ -102,6 +106,8 @@ function generatePassword() {
     finalPassword += getRandomChar(specialCharArr);
     pwChars.push(...specialCharArr);
   }
+
+  //loop until we have the requested pw length
   while (finalPassword.length < passwordRequirements.lengthOfPw) {
     finalPassword += getRandomChar(pwChars);
   }
@@ -109,24 +115,5 @@ function generatePassword() {
   return finalPassword;
 }
 
-//
-function getRandomChar(arr) {
-  let randomNumber = Math.floor(Math.random() * arr.length);
-  return arr[randomNumber];
-}
-
-//generate logic
-
-// const pw = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-// const pwLength = 8;
-// let finalPw = '';
-// //get 5 random characters from here
-// for (i = 0; i < pwLength; i++) {
-//   let randomNum = Math.floor(Math.random() * pw.length);
-//   console.log(pw[randomNum]);
-
-//   finalPw += pw[randomNum];
-//   console.log(finalPw);
-// }
-
-// //recurison or create a function to restart process
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);

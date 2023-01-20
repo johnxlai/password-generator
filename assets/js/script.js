@@ -3,6 +3,11 @@
 const generateBtn = document.querySelector('#generate');
 const passwordText = document.querySelector('#password');
 
+const upperArr = `ABCDEFGHIJKLMNOPQRSTUVWXYZ`.split('');
+const lowerArr = `abcdefghijklmnopqrstuvwxyz`.split('');
+const numericArr = `0123456789`.split('');
+const specialCharArr = `!@#$%^&*()`.split('');
+
 // Write password to the #password input
 function writePassword() {
   //Display password in box
@@ -57,6 +62,7 @@ function generatePassword() {
   );
 
   let passwordRequirements = {
+    lengthOfPw,
     lowerCase,
     upperCase,
     numeric,
@@ -64,47 +70,63 @@ function generatePassword() {
   };
   console.dir(passwordRequirements);
   // (my input should be validated and at least one character type should be selected)
-  const ifAllFalse = Object.keys(passwordRequirements).every(
-    (key) => !passwordRequirements[key]
+  const characterToUse = Object.keys(passwordRequirements).filter(
+    (key) => passwordRequirements[key] === true
   );
 
-  if (ifAllFalse) {
+  if (!characterToUse.length) {
     //Restart app
-    console.log(`You need to select atleast one character type- ${ifAllFalse}`);
+    console.log(`You need to select atleast one character type`);
     invaildInput();
     return `Please Start Again`;
   }
 
-  let pwChars = '';
+  let pwChars = [];
   let finalPassword = '';
 
   if (passwordRequirements.lowerCase) {
-    pwChars += `abcdefghijklmnopqrstuvwxyz`;
+    finalPassword += getRandomChar(lowerArr);
+    pwChars.push(...lowerArr);
   }
   if (passwordRequirements.upperCase) {
-    pwChars += `ABCDEFGHIJKLMNOPQRSTUVWXYZ`;
+    finalPassword += getRandomChar(upperArr);
+    pwChars.push(...upperArr);
   }
 
   if (passwordRequirements.numeric) {
-    pwChars += `0123456789`;
+    finalPassword += getRandomChar(numericArr);
+    pwChars.push(...numericArr);
   }
 
   if (passwordRequirements.specialCharacters) {
-    pwChars += `!@#$%^&*()`;
+    finalPassword += getRandomChar(specialCharArr);
+    pwChars.push(...specialCharArr);
+  }
+  while (finalPassword.length < passwordRequirements.lengthOfPw) {
+    finalPassword += getRandomChar(pwChars);
   }
 
-  passwordRequirements.lengthOfPw = lengthOfPw;
-  console.dir(passwordRequirements);
-
-  //Create a password
-  for (let i = 0; i < passwordRequirements.lengthOfPw; i++) {
-    //return a number between 0 to password length
-    let randomNumber = Math.floor(Math.random() * pwChars.length);
-
-    //Add random single char from the selected criteria using a random number as the index of the string - the plus on make sures it only grabs one char
-    finalPassword += pwChars.substring(randomNumber, randomNumber + 1);
-  }
-  console.log(finalPassword.length);
-  console.log(finalPassword);
   return finalPassword;
 }
+
+//
+function getRandomChar(arr) {
+  let randomNumber = Math.floor(Math.random() * arr.length);
+  return arr[randomNumber];
+}
+
+//generate logic
+
+// const pw = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+// const pwLength = 8;
+// let finalPw = '';
+// //get 5 random characters from here
+// for (i = 0; i < pwLength; i++) {
+//   let randomNum = Math.floor(Math.random() * pw.length);
+//   console.log(pw[randomNum]);
+
+//   finalPw += pw[randomNum];
+//   console.log(finalPw);
+// }
+
+// //recurison or create a function to restart process

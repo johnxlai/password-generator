@@ -9,12 +9,13 @@ function writePassword() {
   passwordText.value = generatePassword();
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
-
+//InvaildInput
 function invaildInput() {
   alert(`Invaild input please start again`);
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener('click', writePassword);
 
 //Prompt question for password criteria
 function generatePassword() {
@@ -36,7 +37,7 @@ function generatePassword() {
   }
 
   //Tell user you must select one type
-  alert('Please note at least one character type its selected');
+  alert('Please note at least one character type needs to be selected');
 
   // Ask character types to include in the password
   //I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
@@ -53,19 +54,24 @@ function generatePassword() {
     `${yesAndNoText}\nDid you want to include special Characters`
   );
 
-  const passwordRequirements = {
-    lengthOfPw,
+  let passwordRequirements = {
     lowerCase,
     upperCase,
     numeric,
     specialCharacters,
   };
-
+  console.dir(passwordRequirements);
   // (my input should be validated and at least one character type should be selected)
   const ifAllFalse = Object.keys(passwordRequirements).every(
     (key) => !passwordRequirements[key]
   );
-  console.log(ifAllFalse);
+
+  if (ifAllFalse) {
+    //Restart app
+    console.log(`You need to select atleast one character type- ${ifAllFalse}`);
+    invaildInput();
+    return;
+  }
 
   let pwChars = '';
   let finalPassword = '';
@@ -84,6 +90,9 @@ function generatePassword() {
   if (passwordRequirements.specialCharacters) {
     pwChars += `!@#$%^&*()`;
   }
+
+  passwordRequirements.lengthOfPw = lengthOfPw;
+  console.dir(passwordRequirements);
 
   //Create a password
 

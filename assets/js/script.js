@@ -19,6 +19,8 @@ generateBtn.addEventListener('click', writePassword);
 
 //Prompt question for password criteria
 function generatePassword() {
+  passwordText.value = '';
+
   //User selects which criteria to include in the password
   alert('Please tell us your password criteria');
 
@@ -33,7 +35,7 @@ function generatePassword() {
     console.log(lengthOfPw);
   } else {
     invaildInput();
-    return;
+    return 'Please start Again';
   }
 
   //Tell user you must select one type
@@ -70,7 +72,7 @@ function generatePassword() {
     //Restart app
     console.log(`You need to select atleast one character type- ${ifAllFalse}`);
     invaildInput();
-    return;
+    return 'Please Start Again';
   }
 
   let pwChars = '';

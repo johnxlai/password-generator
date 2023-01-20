@@ -8,7 +8,7 @@ As an employee with access to sensitive data, I want to randomly generate a pass
 
 
 # Screenshot
-![Final Website](assets/img/password-generator.png)
+![Final Website](./assets/img/password-generator.png)
 
 # Live Site
 * https://johnxlai.github.io/password-generator
